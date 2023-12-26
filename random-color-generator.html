@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random color generato</title>
+
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&family=Roboto:wght@300;400&display=swap');
+
+ body{
+    font-family: 'Poppins', sans-serif;
+ }
+
+
+ .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+} 
+
+.container button{font-size: 22px; padding: 12px 40px;}
+ 
+</style>
+</head>
+<body style="background-color: black; color: beige;">
+
+
+
+<div class="container">
+    <h1>Body background Color change very second</h1>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button>
+</div>    
+    
+</body>
+
+
+<script>
+
+// ganerate random color
+
+
+
+
+const randomcolor = function(){
+
+     const hex = `0123456789ABCDEF`;
+     let color = `#`;
+     
+     for(i = 0; i < 6; i++){
+        color += hex[Math.floor(Math.random() * 16)];   
+     }
+
+     return color;
+
+}
+
+let intervalid;
+const startchaningcolor = function(){
+
+        intervalid =  setInterval(changecolor , 1000);
+
+    function changecolor(){
+        document.body.style.backgroundColor = randomcolor();
+    }
+    
+}
+
+const stopchaningcolor = function(){
+
+    clearTimeout(intervalid);
+    intervalid = null
+
+}
+
+
+document.querySelector(`#Start`).addEventListener(`click`, startchaningcolor)
+
+
+document.querySelector(`#Stop`).addEventListener(`click`, stopchaningcolor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
